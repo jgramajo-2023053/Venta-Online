@@ -1,6 +1,6 @@
 import { body } from "express-validator"
 import { validateErrors, validateErrorsWithoutFiles } from "./validate.errors.js"
-import { notRequiredField } from "../utils/db.validators.js"
+import { notRequiredField, oneName } from "../utils/db.validators.js"
 
 
 export const registerValidator = [
@@ -39,4 +39,42 @@ export const createCategory = [
     body('description', 'Description cannot be empty')
         .notEmpty(),
     validateErrors
+]
+
+export const updateProf = [
+    body('name')
+        .optional()
+        .notEmpty(),
+    body('email')
+        .optional()
+        .notEmpty()
+        .isEmail(),
+    body('password')
+        .optional()
+        .custom(notRequiredField),
+    body('role')
+        .optional()
+        .custom(notRequiredField),
+    validateErrorsWithoutFiles
+]
+
+export const createProduct = [
+    body('name', 'Name cannot be empty')
+        .notEmpty()
+        .custom(oneName),
+    body('brand', 'Brand cannot be empty')
+        .notEmpty(),
+    body('category', 'Category cannot be empty')
+        .notEmpty(),
+    body('price', 'Price cannot be empty')
+        .notEmpty(),
+    body('stock', 'Stock cannot be empty')
+        .notEmpty(),
+    body('exist', 'Exist cannot be empty')
+        .optional()
+        .custom(notRequiredField),
+    body('sell', 'Sell cannot be empty')
+        .optional()
+        .custom(notRequiredField),
+    validateErrorsWithoutFiles
 ]

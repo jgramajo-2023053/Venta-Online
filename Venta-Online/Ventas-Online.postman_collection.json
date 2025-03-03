@@ -58,7 +58,7 @@
 										},
 										{
 											"key": "email",
-											"value": "pepeii@gmail.com",
+											"value": "default@example.com",
 											"type": "text"
 										},
 										{
@@ -69,7 +69,7 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/user/update/67af9dd3cd10e72fddcf17db",
+									"raw": "localhost:2636/v1/user/update/67b2c5f8011744d202a9673b",
 									"host": [
 										"localhost"
 									],
@@ -78,7 +78,7 @@
 										"v1",
 										"user",
 										"update",
-										"67af9dd3cd10e72fddcf17db"
+										"67b2c5f8011744d202a9673b"
 									]
 								}
 							},
@@ -175,12 +175,12 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Alcohol2",
+											"value": "Gaseosa",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "Bebidas alcoholicas ¡No apto para menores de 18 años!",
+											"value": "Bebidas con aire",
 											"type": "text"
 										}
 									]
@@ -307,7 +307,7 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:2636/v1/category/update/67afbcb98bec27ec2c4ff163",
+									"raw": "localhost:2636/v1/category/update/67b2c524ad4a86d568b48666",
 									"host": [
 										"localhost"
 									],
@@ -316,7 +316,127 @@
 										"v1",
 										"category",
 										"update",
-										"67afbcb98bec27ec2c4ff163"
+										"67b2c524ad4a86d568b48666"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Gestión de productos",
+					"item": [
+						{
+							"name": "addProduct",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Coca-Cola 3.5Lt",
+											"type": "text"
+										},
+										{
+											"key": "brand",
+											"value": "Coca-Cola",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c571e5bd6185b50e65c5dd",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "15.50",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "exist",
+											"value": "EXIST",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product/addProduct",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"addProduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product/getall",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"getall"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteProduct",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product/delete/67c57e329f753363307099da",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"delete",
+										"67c57e329f753363307099da"
 									]
 								}
 							},
@@ -383,7 +503,7 @@
 								},
 								{
 									"key": "email",
-									"value": "asde@gmail.com",
+									"value": "asd@gmail.com",
 									"type": "text"
 								},
 								{
@@ -423,13 +543,13 @@
 							"urlencoded": [
 								{
 									"key": "password",
-									"value": "Asada.2024",
+									"value": "Asada.2025",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:2636/v1/user/deleteProfile/67afc532c59f72a5e2f554af",
+							"raw": "localhost:2636/v1/user/deleteProfile",
 							"host": [
 								"localhost"
 							],
@@ -437,8 +557,48 @@
 							"path": [
 								"v1",
 								"user",
-								"deleteProfile",
-								"67afc532c59f72a5e2f554af"
+								"deleteProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Ignacio",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "asada@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/v1/user/updateProfile",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"user",
+								"updateProfile"
 							]
 						}
 					},
@@ -469,12 +629,12 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "mepe@gmail.com",
+							"value": "asada@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "Asada.2024",
+							"value": "Asada.2025",
 							"type": "text"
 						}
 					]

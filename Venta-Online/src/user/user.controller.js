@@ -1,6 +1,5 @@
 import User from './user.model.js'
 import { checkPassword } from '../../utils/encryp.js'
-import { validateJwt } from '../../middlewares/validate.jwt.js'
 
 
 // -------------- ADMIN --------------
@@ -88,12 +87,12 @@ export const getUserId = async(req, res)=>{
 
 
 // -------------- CLIENT --------------
-// Editar perfil
+// Eliminar perfil
 export const deleteProfile= async(req, res)=>{
     try{
-        let { id } = req.params
+        let { uid } = req.user
         let { password } = req.body
-        let user = await User.findById(id)
+        let user = await User.findById(uid)
         if (!user) return res.status(404).send({message: 'User not found'})
         
         const samePass = await checkPassword(user.password, password)
@@ -102,10 +101,30 @@ export const deleteProfile= async(req, res)=>{
                 message: 'Incorrect password' 
             }
          ) 
-        let user2 = await User.findByIdAndDelete(id)
+        let user2 = await User.findByIdAndDelete(uid)
         if(!user2) return res.status(404).send({message: 'User not found'})
-        return res.send({message: 'User Deleted: ', id})
+        return res.send({message: 'User Deleted: ', uid})
     }catch(err){
+        console.error('General error', err)
+        return res.status(500).send({message: 'General error', err})
+    }
+}
+
+// Editar perfil
+export const updateProfile = async (req,res) => {
+    try {
+        let {uid} = req.user
+        let data = req.body
+
+        let profile = await User.findByIdAndUpdate(uid, data, {new: true})
+        
+        return res.send(
+            {
+                message: 'Your profile is updated',
+                profile
+            }
+        )
+    } catch (err) {
         console.error('General error', err)
         return res.status(500).send({message: 'General error', err})
     }

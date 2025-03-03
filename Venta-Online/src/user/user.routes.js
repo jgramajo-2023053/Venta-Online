@@ -4,10 +4,11 @@ import {
     deleteUser,
     getUsers,
     getUserId,
-    deleteProfile
+    deleteProfile,
+    updateProfile
 } from "./user.controller.js"
 import { validateJwt, isAdmin, isClient } from '../../middlewares/validate.jwt.js'
-import { updateValidator, registerValidator } from "../../middlewares/validators.js"
+import { updateProf, updateValidator } from "../../middlewares/validators.js"
 
 
 const api = Router()
@@ -19,7 +20,8 @@ api.get('/:id', [validateJwt, isAdmin], getUserId)
 api.put('/update/:id', [validateJwt, updateValidator, isAdmin], putUser)
 
 //Client Routes
-api.delete('/deleteProfile/:id', [validateJwt, isClient], deleteProfile)
+api.delete('/deleteProfile', [validateJwt, isClient], deleteProfile)
+api.put('/updateProfile', [validateJwt, updateProf, isClient], updateProfile)
 
 
 
