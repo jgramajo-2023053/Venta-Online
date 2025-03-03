@@ -1,4 +1,5 @@
 import Category from './category.model.js'
+import Product from '../product/product.model.js'
 
 //Crear categoria
 export const createCategory = async(req, res)=>{
@@ -66,10 +67,13 @@ export const deleteCategory = async(req, res)=>{
         if (!category) return res.status(404).send({message: 'Category not found'})
             if (category.id === '65a123456789abcdef123456'){
                 res.status(400).send({message: 'You cannot delete this Category'})
-            }else{
-                await Category.findByIdAndDelete(id)
-                return res.send({message: `${category.name} was deleted`})
             }
+
+            const defaultCategoryId = '65a123456789abcdef123456';
+            await Product.updateMany({ category: id }, { category: defaultCategoryId });
+
+            await Category.findByIdAndDelete(id)
+            return res.send({message: `${category.name} was deleted`})
     } catch (err) {
         console.error(err)
         return res.status(500).send({message: 'General Error', err})

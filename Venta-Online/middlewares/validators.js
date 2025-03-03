@@ -78,3 +78,29 @@ export const createProduct = [
         .custom(notRequiredField),
     validateErrorsWithoutFiles
 ]
+
+export const updateProduct = [
+    body('name', 'Name cannot be empty')
+        .optional()
+        .notEmpty()
+        .custom(oneName),
+    body('brand', 'Brand cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('category', 'Category cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('price', 'Price cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('stock', 'Stock cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('exist', 'Exist cannot be empty')
+        .optional()
+        .custom(notRequiredField),
+    body('sell', 'Sell cannot be empty')
+        .optional()
+        .custom(notRequiredField),
+    validateErrorsWithoutFiles
+]
