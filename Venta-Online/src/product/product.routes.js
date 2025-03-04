@@ -2,6 +2,7 @@ import { Router } from 'express'
 import {
     addProduct,
     deleteProduct,
+    getProductName,
     getProducts,
     putProduct
 } from './product.controller.js'
@@ -16,6 +17,7 @@ const api = Router()
 
 api.post('/addProduct', [validateJwt, createProduct, isAdmin], addProduct)
 api.get('/getall', [validateJwt], getProducts)
+api.get('/viewname', [validateJwt], getProductName)
 api.delete('/delete/:id', [validateJwt, isAdmin], deleteProduct)
 api.put('/update/:id', [validateJwt, updateProduct, isAdmin], putProduct)
 

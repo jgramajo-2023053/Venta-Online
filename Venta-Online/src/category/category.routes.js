@@ -13,7 +13,7 @@ const api = Router()
 
 api.post('/create', [validateJwt, isAdmin], createCategory)
 
-api.get('/viewall', [validateJwt, isAdmin], viewCategories)
+api.get('/viewall', [validateJwt], viewCategories)
 
 api.get('/viewone/:id', [validateJwt, isAdmin], viewCategory)
 

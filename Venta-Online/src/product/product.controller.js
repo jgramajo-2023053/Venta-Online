@@ -56,6 +56,18 @@ export const getProducts = async (req, res) => {
     }
 }
 
+export const getProductName = async (req, res) => {
+    try {
+        let data = req.body
+        let product = await Product.findOne({name: data.name})
+        if(!product) return res.status(404).send({message: 'Product not found'})
+            return res.send({message: 'Products found: ', product})
+    } catch (err) {
+        console.error('General error', err)
+        return res.status(500).send({message: 'General error', err})
+    }
+}
+
 export const deleteProduct = async (req, res) => {
     try{
         let { id } = req.params

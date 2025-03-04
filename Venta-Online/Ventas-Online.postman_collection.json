@@ -238,7 +238,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2636/v1/category/viewone/67afbcb98bec27ec2c4ff163",
+									"raw": "localhost:2636/v1/category/viewone/67c571e5bd6185b50e65c5dd",
 									"host": [
 										"localhost"
 									],
@@ -247,7 +247,7 @@
 										"v1",
 										"category",
 										"viewone",
-										"67afbcb98bec27ec2c4ff163"
+										"67c571e5bd6185b50e65c5dd"
 									]
 								}
 							},
@@ -343,17 +343,17 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Coca-Cola 3.5Lt",
+											"value": "Coca 3.5kg",
 											"type": "text"
 										},
 										{
 											"key": "brand",
-											"value": "Coca-Cola",
+											"value": "Coca",
 											"type": "text"
 										},
 										{
 											"key": "category",
-											"value": "67c571e5bd6185b50e65c5dd",
+											"value": "67c6127747ec8dedded35695",
 											"type": "text"
 										},
 										{
@@ -441,6 +441,63 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "put Product",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Rica Piña 3.5L4",
+											"type": "text"
+										},
+										{
+											"key": "brand",
+											"value": "SalvaVidas",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c571e5bd6185b50e65c5du",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "15.50",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product/update/67c610890b166b8677b9c82c",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"update",
+										"67c610890b166b8677b9c82c"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -489,6 +546,181 @@
 			"name": "CLIENT",
 			"item": [
 				{
+					"name": "Exploración de Productos",
+					"item": [
+						{
+							"name": "View Categories Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:2636/v1/category/viewall",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"category",
+										"viewall"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search by name",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Coca-Cola 3.5Lt",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/product/viewname",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"viewname"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/product/getall",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"product",
+										"getall"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Gestión de Carrito de Compras",
+					"item": [
+						{
+							"name": "add to cart",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "productId",
+											"value": "67c57f27929ef60b99cd82a3",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:2636/v1/cart/add",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"cart",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view cart",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:2636/v1/cart/view",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"cart",
+										"view"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "RegisterClient",
 					"request": {
 						"method": "POST",
@@ -528,7 +760,7 @@
 					"response": []
 				},
 				{
-					"name": "DeleteProfile",
+					"name": "Eliminación de Cuenta",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -564,7 +796,7 @@
 					"response": []
 				},
 				{
-					"name": "UpdateProfile",
+					"name": "Gestión de Perfil",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -603,6 +835,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Proceso Compra",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/v1/buy/complete",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"v1",
+								"buy",
+								"complete"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -629,7 +887,7 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "asada@gmail.com",
+							"value": "asd@gmail.com",
 							"type": "text"
 						},
 						{
